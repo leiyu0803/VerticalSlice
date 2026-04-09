@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Prototype_512x512_White
-  m_Shader: {fileID: 4800000, guid: ba8cc9eee561a5644b5f344cc599fd1d, type: 3}
+  m_Shader: {fileID: 4800000, guid: ed91822afe8bc914380f71c337672e76, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
