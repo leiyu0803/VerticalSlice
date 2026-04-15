@@ -10,4 +10,5 @@ Milestone 4 Devlog goes here.
 ## Final Devlog
 Final Devlog goes here.
 ## Open-source assets
-- Cite any external assets used here!
+- [Movement Animations](https://www.mixamo.com/#/?page=1&type=Motion%2CMotionPack)
+- [Guns and Player](https://assetstore.unity.com/packages/3d/animations/tactical-fps-animations-311410)
