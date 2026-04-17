@@ -24,6 +24,11 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] List<AudioClip> shootSound;
     [SerializeField] AudioClip tailSound;
     AudioSource audioSource;
+    WeaponAmmo weaponAmmo;
+    bool Shooted;
+
+    Animator animator;
+    ActionStateManager actionStateManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -31,6 +36,9 @@ public class WeaponManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         playerInput = GetComponentInParent<PlayerInput>();
         aim = GetComponentInParent<AimStateManager>();
+        weaponAmmo = GetComponentInParent<WeaponAmmo>();
+        animator = GetComponent<Animator>();
+        actionStateManager = GetComponentInParent<ActionStateManager>();
         firerate = 60f / RPM;
         fireTimer = 60f / RPM;
         audioSource.PlayOneShot(equipSound);
@@ -42,17 +50,29 @@ public class WeaponManager : MonoBehaviour
         if(ShouldFire())
         {
             Fire();
+
         }
-        if (ShouldPlayTailSound())
+        if (ShouldPlayTailSound()&&Shooted)
         {
             audioSource.PlayOneShot(tailSound);
+            Shooted = false;
         }
+
+
     }
 
     bool ShouldFire()
     {
         fireTimer += Time.deltaTime;
         if (fireTimer < firerate)
+        {
+            return false;
+        }
+        if(weaponAmmo.currentAmmo == 0)
+        {
+            return false;
+        }
+        if(actionStateManager.currentState == actionStateManager.Reload)
         {
             return false;
         }
@@ -83,11 +103,15 @@ public class WeaponManager : MonoBehaviour
         fireTimer = 0;
         firePos.LookAt(aim.aimPos);
         audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Count)]);
+        weaponAmmo.currentAmmo--;
         for (int i = 0;i< bulletPerShoot;i++)
         {
             GameObject currentBullet = Instantiate(bulletPrefab, firePos.position, firePos.rotation);
             Rigidbody rb = currentBullet.GetComponent<Rigidbody>();
             rb.AddForce(firePos.forward * bulletSpeed, ForceMode.Impulse);
-        } 
+        }
+        Shooted = true;
+        animator.SetTrigger("Fire");
+        Debug.Log(weaponAmmo.currentAmmo);
     }
 }
