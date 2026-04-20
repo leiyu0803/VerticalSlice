@@ -27,8 +27,14 @@ public class WeaponManager : MonoBehaviour
     WeaponAmmo weaponAmmo;
     bool Shooted;
 
+    [Header("VFX Settings")]
+    [SerializeField] ParticleSystem muzzleFlash;
+    [SerializeField] Transform casingSpawnPos;
+    [SerializeField] GameObject casingPrefab;
+
     Animator animator;
     ActionStateManager actionStateManager;
+    WeaponRecoil recoil;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -39,6 +45,7 @@ public class WeaponManager : MonoBehaviour
         weaponAmmo = GetComponentInParent<WeaponAmmo>();
         animator = GetComponent<Animator>();
         actionStateManager = GetComponentInParent<ActionStateManager>();
+        recoil = GetComponent<WeaponRecoil>();
         firerate = 60f / RPM;
         fireTimer = 60f / RPM;
         audioSource.PlayOneShot(equipSound);
@@ -103,6 +110,8 @@ public class WeaponManager : MonoBehaviour
         fireTimer = 0;
         firePos.LookAt(aim.aimPos);
         audioSource.PlayOneShot(shootSound[Random.Range(0, shootSound.Count)]);
+        recoil.Recoil();
+        TriggerMuzzleFlash();
         weaponAmmo.currentAmmo--;
         for (int i = 0;i< bulletPerShoot;i++)
         {
@@ -113,5 +122,11 @@ public class WeaponManager : MonoBehaviour
         Shooted = true;
         animator.SetTrigger("Fire");
         Debug.Log(weaponAmmo.currentAmmo);
+    }
+
+    void TriggerMuzzleFlash()
+    {
+        muzzleFlash.Play();
+        GameObject casing = Instantiate(casingPrefab, casingSpawnPos.position, casingSpawnPos.rotation);
     }
 }
