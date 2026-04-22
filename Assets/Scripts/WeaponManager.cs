@@ -35,6 +35,7 @@ public class WeaponManager : MonoBehaviour
     Animator animator;
     ActionStateManager actionStateManager;
     WeaponRecoil recoil;
+    UIManager UIManager;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -45,6 +46,7 @@ public class WeaponManager : MonoBehaviour
         weaponAmmo = GetComponentInParent<WeaponAmmo>();
         animator = GetComponent<Animator>();
         actionStateManager = GetComponentInParent<ActionStateManager>();
+        UIManager = GetComponentInParent<UIManager>();
         recoil = GetComponent<WeaponRecoil>();
         firerate = 60f / RPM;
         fireTimer = 60f / RPM;
@@ -121,7 +123,8 @@ public class WeaponManager : MonoBehaviour
         }
         Shooted = true;
         animator.SetTrigger("Fire");
-        Debug.Log(weaponAmmo.currentAmmo);
+        StartCoroutine(UIManager.PunchScale());
+
     }
 
     void TriggerMuzzleFlash()

@@ -16,6 +16,7 @@ public class ActionStateManager : MonoBehaviour
     [HideInInspector] public Animator animator;
     [HideInInspector] public Animator weaponAnimator;
     [HideInInspector] public AudioSource audioSource;
+    [HideInInspector] public UIManager uIManager;
 
     public MultiAimConstraint rHandAim;
     public TwoBoneIKConstraint lHandIK;
@@ -29,6 +30,7 @@ public class ActionStateManager : MonoBehaviour
         animator = GetComponentInChildren<Animator>();
         weaponAnimator = currentWeapon.GetComponent<Animator>();
         audioSource = GetComponent<AudioSource>();
+        uIManager = GetComponent<UIManager>();
         animator.SetBool("Draw", true);
         weaponAnimator.SetBool("Draw", true);
     }

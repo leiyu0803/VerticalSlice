@@ -8,13 +8,17 @@ public class WeaponAmmo : MonoBehaviour
 
     public AudioClip reloadEmpty;
     public AudioClip reloadNotEmpty;
+
+    private UIManager UIManager;
     void Start()
     {
         currentAmmo = clipSize + 1;
+        UIManager = GetComponentInParent<UIManager>();
     }
 
     public void Reload()
     {
+        UIManager.StopBlink();
         int ammoNeeded;
         if (currentAmmo > 0)
         {

@@ -4,6 +4,7 @@ public class ReloadState : ActionBaseState
 {
     public override void EnterState(ActionStateManager actionStateManager)
     {
+        actionStateManager.uIManager.StartBlink();
         if (actionStateManager.ammo.currentAmmo > 0)
         {
             actionStateManager.animator.SetTrigger("ReloadNotEmpty");

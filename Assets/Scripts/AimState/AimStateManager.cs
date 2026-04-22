@@ -13,9 +13,6 @@ public class AimStateManager : MonoBehaviour
     [HideInInspector] public PlayerInput playerInput;
     [SerializeField] Transform camFollowPos;
     [SerializeField] float Sensitivity = 1;
-    [SerializeField] AnimationCurve switchCurve = AnimationCurve.EaseInOut(0, 0, 1, 1);
-    private bool isSwitching = false;
-    [SerializeField] float switchDuration = 0.5f;
 
     [HideInInspector] public Animator animator;
     [HideInInspector] public CinemachineCamera vCam;
@@ -61,6 +58,9 @@ public class AimStateManager : MonoBehaviour
 
         currentState.UpdateState(this);
 
+        if(movementStateManager.currentState == movementStateManager.Run) 
+        vCam.Lens.FieldOfView = Mathf.Lerp(vCam.Lens.FieldOfView, currentFOV + 10, fovSmoothSpeed * Time.deltaTime);
+        else
         vCam.Lens.FieldOfView = Mathf.Lerp(vCam.Lens.FieldOfView, currentFOV, fovSmoothSpeed * Time.deltaTime);
 
         Vector2 screenCenter = new Vector2(Screen.width / 2, Screen.height / 2);

@@ -10,7 +10,7 @@ public class InfoDisplay : MonoBehaviour
     RuntimePlatform platform;
     string ID;
     string productName;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    string sceneName;
     void Start()
     {
         text = GetComponent<TMP_Text>();
@@ -19,11 +19,10 @@ public class InfoDisplay : MonoBehaviour
         ID = Application.buildGUID;
         productName = Application.productName;
     }
-
-    // Update is called once per frame
     void Update()
     {
         time = DateTime.UtcNow;
-        text.text = productName + "\n" + "ENG_" + platform + "_" + Verision + "_" + ID + "\n" + time + " UTC";
+        sceneName = UnityEngine.SceneManagement.SceneManager.GetActiveScene().name;
+        text.text = productName + "\n" + sceneName + "\n" + time + " UTC" + "\n" + "ENG_" + platform + "_" + Verision + "_" + ID;
     }
 }
