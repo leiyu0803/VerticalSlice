@@ -34,7 +34,7 @@ public class MovementStateManager : MonoBehaviour
     public CrouchState Crouch = new CrouchState();
 
     [HideInInspector] public Animator animator;
-
+    public Vector3 speed;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -78,6 +78,7 @@ public class MovementStateManager : MonoBehaviour
         smoothVerticalInput = Mathf.SmoothDamp(smoothVerticalInput, smoothVerticalInputTarget, ref verticalVelocity, inputSmoothTime);
 
         moveDirection = transform.forward * verticalInput + transform.right * horizontalInput;
+        speed = moveDirection * currentmoveSpeed;
         characterController.Move(moveDirection * currentmoveSpeed * Time.deltaTime);
     }
 

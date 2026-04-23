@@ -800,6 +800,7 @@ GameObject:
   - component: {fileID: 365957099}
   - component: {fileID: 365957098}
   - component: {fileID: 365957097}
+  - component: {fileID: 365957101}
   m_Layer: 7
   m_Name: Canvas
   m_TagString: Untagged
@@ -836,7 +837,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 25, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 1.6, y: 1.2}
+  m_AnchoredPosition: {x: 1, y: 1}
   m_SizeDelta: {x: 900, y: 420}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &365957097
@@ -852,6 +853,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FaceCamera
   cam: {fileID: 1378723728}
+  shakeIntensity: 0.001
+  shakeFrequency: 1
 --- !u!114 &365957098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -915,6 +918,20 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!114 &365957101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 365957095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0891bd3a30e67f34d8dd65c36ba96418, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
+  vcam: {fileID: 1208788183}
+  referenceFOV: 60
 --- !u!1 &369987589
 GameObject:
   m_ObjectHideFlags: 0
@@ -3071,7 +3088,7 @@ Transform:
   m_GameObject: {fileID: 1208788182}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.6, z: -2}
+  m_LocalPosition: {x: 0.5, y: 1.6, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -3181,7 +3198,7 @@ Transform:
   m_GameObject: {fileID: 1378723728}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.2, z: 0}
+  m_LocalPosition: {x: 0.5, y: 1.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3568,7 +3585,7 @@ MonoBehaviour:
   - {fileID: 554798150}
   - {fileID: 1463019580}
   - {fileID: 47694325}
-  fullText: "Fracture  Zone  Zero\nThree  days  after  the  Incident,  00:00:00\nReality 
+  fullText: "Fractured  Zone  Zero\nThree  days  after  the  Incident,  00:00:00\nReality 
     Stability  Index:  0.0000000\xB10.0000000\nDATA  LOST"
   displayTime: 1
   panelImage: {fileID: 62966373}
@@ -4029,6 +4046,7 @@ MonoBehaviour:
     m_Bits: 65
   gravity: -9.81
   animator: {fileID: 0}
+  speed: {x: 0, y: 0, z: 0}
 --- !u!4 &2064311166
 Transform:
   m_ObjectHideFlags: 0
@@ -4690,7 +4708,7 @@ Transform:
   m_GameObject: {fileID: 2143962495}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1, y: 1.64, z: -2}
+  m_LocalPosition: {x: 0.5, y: 1.64, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

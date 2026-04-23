@@ -5,8 +5,10 @@ public class FaceCamera : MonoBehaviour
 {
     public GameObject cam;
     PlayerInput playerInput;
-
+    MovementStateManager controller;
     float xPos,yRot,z;
+    public float shakeIntensity = 0.02f;
+    public float shakeFrequency = 20f;
 
     private void Start()
     {
@@ -14,6 +16,7 @@ public class FaceCamera : MonoBehaviour
         yRot = 25;
         z = 1;
         playerInput = GetComponentInParent<PlayerInput>();
+        controller = GetComponentInParent<MovementStateManager>();
     }
 
     void Update()
@@ -34,4 +37,5 @@ public class FaceCamera : MonoBehaviour
         transform.localRotation = Quaternion.Lerp(transform.localRotation, newRot, 10 * Time.deltaTime);
 
     }
+
 }
