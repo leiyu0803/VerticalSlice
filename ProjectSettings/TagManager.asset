@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 3
-  tags: []
+  tags:
+  - InteractableItem
+  - InteractImage
+  - AR
   layers:
   - Default
   - TransparentFX
@@ -15,7 +18,7 @@ TagManager:
   - Player
   - Bullet
   - PickUpUI
-  - 
+  - InteractableItem
   - 
   - 
   - 

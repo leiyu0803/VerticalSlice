@@ -7,8 +7,6 @@ public class FaceCamera : MonoBehaviour
     PlayerInput playerInput;
     MovementStateManager controller;
     float xPos,yRot,z;
-    public float shakeIntensity = 0.02f;
-    public float shakeFrequency = 20f;
 
     private void Start()
     {

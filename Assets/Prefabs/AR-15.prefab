@@ -432,7 +432,7 @@ GameObject:
   - component: {fileID: 623469082626864374}
   m_Layer: 7
   m_Name: AR-15
-  m_TagString: Untagged
+  m_TagString: AR
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

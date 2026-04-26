@@ -11,9 +11,13 @@ public class InfoDisplay : MonoBehaviour
     string ID;
     string productName;
     string sceneName;
+    void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
     void Start()
     {
-        text = GetComponent<TMP_Text>();
+        text = GetComponentInChildren<TMP_Text>();
         Verision = Application.version;
         platform = Application.platform;
         ID = Application.buildGUID;
