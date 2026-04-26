@@ -5,11 +5,11 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 public class AimStateManager : MonoBehaviour
 {
-    AimBaseState currentState;
-    public HipfireStete hip = new HipfireStete();
-    public AimState aim = new AimState();
+    [HideInInspector] public AimBaseState currentState;
+    [HideInInspector] public HipfireStete hip = new HipfireStete();
+    [HideInInspector] public AimState aim = new AimState();
 
-    public InputAxis xAxis, yAxis;
+    [HideInInspector] public InputAxis xAxis, yAxis;
     [HideInInspector] public PlayerInput playerInput;
     [SerializeField] Transform camFollowPos;
     [SerializeField] float Sensitivity = 1;

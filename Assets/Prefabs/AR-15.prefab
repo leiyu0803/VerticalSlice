@@ -472,6 +472,7 @@ MonoBehaviour:
   firePos: {fileID: 3943208489940431921}
   bulletSpeed: 975
   bulletPerShoot: 1
+  BulletDamage: 20
   equipSound: {fileID: 8300000, guid: 734042e0815b701499b231edc6b5377d, type: 3}
   shootSound:
   - {fileID: 8300000, guid: 6256f43eeabc3b347ba9775818cbfe43, type: 3}

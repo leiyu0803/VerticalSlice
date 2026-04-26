@@ -10,6 +10,7 @@ public class IntroText : MonoBehaviour
     [TextArea] public string fullText;
     public float displayTime = 1;
     public RectTransform panelImage;
+    public RectTransform Background;
     void Start()
     {
         StartCoroutine(SpawnLines());
