@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WeaponAmmo : MonoBehaviour
 {
@@ -9,6 +10,11 @@ public class WeaponAmmo : MonoBehaviour
     public AudioClip reloadEmpty;
     public AudioClip reloadNotEmpty;
 
+    public RectTransform NoAmmoUI;
+    public Sprite Crosshair;
+    public Sprite NoAmmoCrosshair;
+    public Image CrosshairImage;
+
     private UIManager UIManager;
     void Start()
     {
@@ -16,6 +22,26 @@ public class WeaponAmmo : MonoBehaviour
         UIManager = GetComponentInParent<UIManager>();
     }
 
+    private void Update()
+    {
+        if (currentAmmo + extraAmmo <= 0)
+        {
+            NoAmmoUI.localScale = new Vector3(Mathf.Lerp(NoAmmoUI.localScale.x, 0.5f, Time.deltaTime * 20), 0.5f, 0.5f);
+        }
+        else
+        {
+            NoAmmoUI.localScale = new Vector3(Mathf.Lerp(NoAmmoUI.localScale.x, 0, Time.deltaTime * 20), 0.5f, 0.5f);
+        }
+        if (currentAmmo <= 0)
+        {
+            CrosshairImage.sprite = NoAmmoCrosshair;
+
+        }
+        else
+        {
+            CrosshairImage.sprite = Crosshair;
+        }
+    }
     public void Reload()
     {
         UIManager.StopBlink();

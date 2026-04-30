@@ -3,6 +3,7 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 public class AimStateManager : MonoBehaviour
 {
     [HideInInspector] public AimBaseState currentState;
@@ -25,12 +26,15 @@ public class AimStateManager : MonoBehaviour
     public Transform aimPos;
     [SerializeField] float aimSmoothSpeed = 20;
     [SerializeField] LayerMask aimMask;
+    [SerializeField] LayerMask enemyMask;
 
     float xFollowPos;
     float yFollowPos, ogYPos;
     [SerializeField] float crouchCamHeight = 0.6f;
     [SerializeField] float shoulderSwapSpeed = 10;
     MovementStateManager movementStateManager;
+
+    public Image crosshair;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -71,6 +75,15 @@ public class AimStateManager : MonoBehaviour
             aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
         }
         MoveCamera();
+
+        if(Physics.Raycast(ray, out RaycastHit hit2, Mathf.Infinity, enemyMask))
+        {
+            crosshair.color = Color.red;
+        }
+        else
+        {
+            crosshair.color = Color.white;
+        }
     }
 
     private void LateUpdate()
