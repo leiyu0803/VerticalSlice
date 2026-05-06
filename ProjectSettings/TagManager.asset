@@ -7,6 +7,9 @@ TagManager:
   - InteractableItem
   - InteractImage
   - AR
+  - PlayerHead
+  - OBSERVER
+  - DEBUG_DAMAGE
   layers:
   - Default
   - TransparentFX

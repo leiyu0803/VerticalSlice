@@ -13,7 +13,11 @@ public class AimStateManager : MonoBehaviour
     [HideInInspector] public InputAxis xAxis, yAxis;
     [HideInInspector] public PlayerInput playerInput;
     [SerializeField] Transform camFollowPos;
+    [SerializeField] Transform firePos;
+    [SerializeField] Transform gunAimPos;
     [SerializeField] float Sensitivity = 1;
+    AimUI aimUI;
+
 
     [HideInInspector] public Animator animator;
     [HideInInspector] public CinemachineCamera vCam;
@@ -26,7 +30,6 @@ public class AimStateManager : MonoBehaviour
     public Transform aimPos;
     [SerializeField] float aimSmoothSpeed = 20;
     [SerializeField] LayerMask aimMask;
-    [SerializeField] LayerMask enemyMask;
 
     float xFollowPos;
     float yFollowPos, ogYPos;
@@ -47,6 +50,7 @@ public class AimStateManager : MonoBehaviour
         hipFOV = vCam.Lens.FieldOfView;
         animator = GetComponent<Animator>();
         playerInput = GetComponent<PlayerInput>();
+        aimUI = GetComponentInChildren<AimUI>();
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
         SwitchState(hip);
@@ -74,11 +78,28 @@ public class AimStateManager : MonoBehaviour
         {
             aimPos.position = Vector3.Lerp(aimPos.position, hit.point, aimSmoothSpeed * Time.deltaTime);
         }
+
+        Ray ray1 = new Ray(firePos.position, (aimPos.position - firePos.position).normalized);
+        if(Physics.Raycast(ray1, out RaycastHit hit1, Mathf.Infinity, aimMask))
+        {
+            gunAimPos.position = hit1.point;
+        }
+
+        if (Vector3.Distance(gunAimPos.position, aimPos.position) > 0.01f)
+        {
+            aimUI.IsDifferent = true;
+        }
+        else
+        {
+            aimUI.IsDifferent = false;
+        }
         MoveCamera();
 
-        if(Physics.Raycast(ray, out RaycastHit hit2, Mathf.Infinity, enemyMask))
+        if(Physics.Raycast(ray, out RaycastHit hit2, Mathf.Infinity, aimMask))
         {
-            crosshair.color = Color.red;
+            if(hit2.transform.gameObject.layer == LayerMask.NameToLayer("Enemy"))
+                crosshair.color = Color.red;
+            else crosshair.color = Color.white;
         }
         else
         {

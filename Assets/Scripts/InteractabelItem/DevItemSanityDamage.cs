@@ -4,6 +4,6 @@ public class DevItemSanityDamage : InteractableItem
 {
     public override void Interact()
     {
-        player.GetComponent<PlayerHealthManager>().SanityDamage(20);
+        player.GetComponent<PlayerHealthManager>().SanityDamage(20, this.gameObject);
     }
 }
