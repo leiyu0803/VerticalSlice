@@ -15,23 +15,13 @@ public class AimUI : MonoBehaviour
     AimStateManager aimStateManager;
 
     [HideInInspector] public bool IsDifferent;
+    bool IsDifferent2;
     private void Start()
     {
         aimStateManager = GetComponentInParent<AimStateManager>();
     }
     void Update()
     {
-        if (aimStateManager.currentState == aimStateManager.aim)
-        {
-            uiPoint.SetActive(true);
-            actualAimUIPoint.SetActive(IsDifferent);
-        }
-        else
-        {
-            uiPoint.SetActive(false);
-            actualAimUIPoint.SetActive(false);
-            return;
-        }
         Vector3 screenPos = cam.WorldToScreenPoint(worldTarget.position);
         RectTransformUtility.ScreenPointToLocalPointInRectangle(
             canvasRect,
@@ -46,8 +36,26 @@ public class AimUI : MonoBehaviour
             null,
             out Vector2 localPos1
         );
-
+        if(Vector2.Distance(localPos, localPos1) > 1)
+        {
+            IsDifferent2 = true;
+        }
+        else
+        {
+            IsDifferent2 = false;
+        }
         uiPoint.GetComponent<RectTransform>().anchoredPosition = localPos;
         actualAimUIPoint.GetComponent<RectTransform>().anchoredPosition = localPos1;
+        if (aimStateManager.currentState == aimStateManager.aim)
+        {
+            uiPoint.SetActive(true);
+            actualAimUIPoint.SetActive(IsDifferent && IsDifferent2);
+        }
+        else
+        {
+            uiPoint.SetActive(false);
+            actualAimUIPoint.SetActive(false);
+            return;
+        }
     }
 }
