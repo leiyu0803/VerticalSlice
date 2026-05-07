@@ -30,13 +30,9 @@ public class EnemyHealth : MonoBehaviour
     }
     void Update()
     {
-        if (isDead)
+        if (isDead && transform.position.y > -3)
         {
             transform.Translate(0, -1 * Time.deltaTime, 0);
-        }
-        if(transform.position.y < -10)
-        {
-            Destroy(gameObject);
         }
     }
     IEnumerator EnemyDeath()
