@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/TestScene.unity
     guid: 5629c927002223f4980c960a54ed8f7f
+  - enabled: 1
+    path: Assets/Scenes/Tutorial.unity
+    guid: dd76dba175c75364f9b0d8bafed4e13b
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

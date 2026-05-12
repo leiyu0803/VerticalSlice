@@ -11,6 +11,7 @@ public class InteractableItem : MonoBehaviour
     Image interactImage;
     [HideInInspector] public GameObject player;
     [SerializeField] bool DistoryAfterInteract = true;
+    public bool isActive = true;
     public virtual void Start()
     {
         canvas = GetComponentInChildren<Canvas>();
@@ -27,7 +28,7 @@ public class InteractableItem : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Player"))
+        if (other.gameObject.CompareTag("Player")&&isActive)
         {
             other.GetComponent<InteractableItemManager>().interactables.Add(gameObject);
             player = other.gameObject;
@@ -56,7 +57,7 @@ public class InteractableItem : MonoBehaviour
     {
         interacting = false;
     }
-    private void Update()
+    public virtual void Update()
     {
         if (interacting)
         {

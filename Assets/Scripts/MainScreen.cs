@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -7,14 +8,17 @@ using UnityEngine.SceneManagement;
 public class MainScreen : MonoBehaviour
 {
     public GameObject warning;
-    public GameObject StartButton;
+    public List<GameObject> StartButton;
     bool IsWarning = false;
     public TMP_Text progress;
     bool Started = false;
-    public void GameStart()
+    int level;
+    public void GameStart(int level)
     {
         IsWarning = true;
-        StartButton.SetActive(false);
+        foreach (GameObject StartButton in StartButton)
+            StartButton.SetActive(false);
+        this.level = level;
     }
     private void Update()
     {
@@ -28,7 +32,7 @@ public class MainScreen : MonoBehaviour
     }
     IEnumerator LoadLevel()
     {
-        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(1);
+        AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(level);
         asyncLoad.allowSceneActivation = false;
         while (!asyncLoad.isDone)
         {
@@ -44,8 +48,5 @@ public class MainScreen : MonoBehaviour
             }
             yield return null;
         }
-    }
-    public void Continue()
-    {
     }
 }

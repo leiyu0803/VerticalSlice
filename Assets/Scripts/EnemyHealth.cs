@@ -10,6 +10,7 @@ public class EnemyHealth : MonoBehaviour
     bool isDead = false;
     NavMeshAgent agent;
     AIManager aiManager;
+    public GameObject damage;
     void Start()
     {
         animator = GetComponent<Animator>();
@@ -37,10 +38,23 @@ public class EnemyHealth : MonoBehaviour
     }
     IEnumerator EnemyDeath()
     {
-        animator.SetTrigger("Death");
-        agent.enabled = false;
-        aiManager.enabled = false;
-        GetComponent<CapsuleCollider>().enabled = false;
+        if(animator != null) animator.SetTrigger("Death");
+        if(agent != null) agent.enabled = false;
+        if(aiManager != null) aiManager.enabled = false;
+        if(damage != null) damage.SetActive(false);
+        GameObject a = GameObject.Find("TutorialProgress");
+        if (a != null) 
+        {
+            if(a.GetComponent<TutorialProgress>().progress == 5 || a.GetComponent<TutorialProgress>().progress == 6 || a.GetComponent<TutorialProgress>().progress == 16)
+            {
+                a.GetComponent<TutorialProgress>().progress++;
+            }
+            if(gameObject.name == "Target")
+            {
+                Destroy(gameObject);
+            }
+        }
+        if(GetComponent<CapsuleCollider>() != null) GetComponent<CapsuleCollider>().enabled = false;
         yield return new WaitForSeconds(5);
         isDead = true;
     }

@@ -15,6 +15,8 @@ public class ItemManager : MonoBehaviour
     public float BatterySpeed = 2;
     public float WaterSpeed = 2;
 
+    public bool hasOBJ = false;
+
     PlayerInput playerInput;
     PlayerHealthManager playerHealthManager;
     bool isUsingHeal = false;

@@ -7,6 +7,8 @@ public class WeaponAmmo : MonoBehaviour
     public int extraAmmo;
     [HideInInspector] public int currentAmmo;
 
+    public bool fullInStart = true;
+
     public AudioClip reloadEmpty;
     public AudioClip reloadNotEmpty;
 
@@ -18,7 +20,14 @@ public class WeaponAmmo : MonoBehaviour
     private UIManager UIManager;
     void Start()
     {
-        currentAmmo = clipSize + 1;
+        if (fullInStart)
+        {
+            currentAmmo = clipSize;
+        }
+        else
+        {
+            currentAmmo = 0;
+        }
         UIManager = GetComponentInParent<UIManager>();
     }
 
