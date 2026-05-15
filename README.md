@@ -9,7 +9,41 @@
    The AimStateManager contains two state, Aim and Hipfire. This will control weather the crosshair appear, and the FOV, will change state if player press RMB. The MovementStateManager contains four states, Idle, Walk, Run, Crouch. This will controls the animation of the player, and the speed of the player. 
 
 ## Milestone 2 Devlog
-Milestone 2 Devlog goes here.
+
+### Question 1
+
+1. Let enemy have animation
+   1. Create an Animator and attach it to the enemy
+   2. Import the Idle animation and set it to loop
+   3. Check to see if it is working properly
+2. Add additional animation states
+   1. Import anger, attack, and death animations
+   2. Add Transition
+   3. Add parameters
+3. Link enemy animations to enemy states
+   1. Add transition conditions
+   2. Adjust parameters in the script
+   3. Check to see if it is working properly
+   4. Adjust the animation speed to better match the enemy's movements
+
+### Question 2
+
+Yes, this has been very helpful. It provides a clear roadmap for how to animate enemies and allows me to confirm more quickly whether I’m doing it right. If I were to do this again, I would break each step down into even finer details. The current steps aren’t quite detailed enough.
+
+### Question 3
+
+I use SetBool() and SetTrigger() in my script to adjust the Animator's parameters. This allows me to control the enemy's animation state using code.
+
+Related scripts: `AIManager.cs`, `EnemyHealth.cs`
+
+Graph screenshot:
+
+
+
+### Question 4
+
+Enemy Animator. Includes idle, agitated, moving, attacking, and death states. Related content can be found in `AIManager.cs`, `EnemyHealth.cs`, and the enemy's Animator Controller.
+
 ## Milestone 3 Devlog
 Milestone 3 Devlog goes here.
 ## Milestone 4 Devlog
