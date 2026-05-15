@@ -38,6 +38,7 @@ Related scripts: `AIManager.cs`, `EnemyHealth.cs`
 
 Graph screenshot:
 
+<img width="1610" height="920" alt="image" src="https://github.com/user-attachments/assets/c3353ee0-43ab-4e38-a805-7db1fb71b090" />
 
 
 ### Question 4
