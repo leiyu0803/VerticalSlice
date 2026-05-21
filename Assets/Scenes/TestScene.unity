@@ -1801,6 +1801,7 @@ MonoBehaviour:
   interactTime: 0.5
   player: {fileID: 0}
   DistoryAfterInteract: 0
+  isActive: 1
 --- !u!54 &416574561
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4282,6 +4283,7 @@ MonoBehaviour:
   interactTime: 0.5
   player: {fileID: 0}
   DistoryAfterInteract: 0
+  isActive: 1
 --- !u!54 &1055309483
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5442,6 +5444,7 @@ MonoBehaviour:
   interactTime: 1
   player: {fileID: 0}
   DistoryAfterInteract: 1
+  isActive: 1
 --- !u!1 &1463019579
 GameObject:
   m_ObjectHideFlags: 0
@@ -7832,11 +7835,16 @@ MonoBehaviour:
   haelthHealAmount: 20
   sanityHealAmount: 20
   HealuseSpeed: 2
-  BatterySpeed: 2
   WaterSpeed: 2
+  hasOBJ: 0
   healLerp: {fileID: 107603269}
   batteryLerp: {fileID: 19626318}
   waterLerp: {fileID: 1574731185}
+  scanDistance: 20
+  scanAngle: 60
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &2064311177
 MonoBehaviour:
   m_ObjectHideFlags: 0

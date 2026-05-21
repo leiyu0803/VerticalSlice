@@ -11498,17 +11498,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   heal: 0
-  battery: 0
+  battery: 5
   water: 0
   haelthHealAmount: 20
   sanityHealAmount: 20
   HealuseSpeed: 2
-  BatterySpeed: 2
   WaterSpeed: 2
   hasOBJ: 0
   healLerp: {fileID: 107603269}
   batteryLerp: {fileID: 19626318}
   waterLerp: {fileID: 1574731185}
+  scanDistance: 20
+  scanAngle: 60
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!114 &2064311177
 MonoBehaviour:
   m_ObjectHideFlags: 0

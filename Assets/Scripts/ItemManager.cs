@@ -12,7 +12,7 @@ public class ItemManager : MonoBehaviour
     public float sanityHealAmount = 20;
 
     public float HealuseSpeed = 2;
-    public float BatterySpeed = 2;
+    //public float BatterySpeed = 2;
     public float WaterSpeed = 2;
 
     public bool hasOBJ = false;
@@ -27,6 +27,9 @@ public class ItemManager : MonoBehaviour
     public Image batteryLerp;
     public Image waterLerp;
 
+    public float scanDistance = 20f;
+    public float scanAngle = 60f;
+    public LayerMask enemyMask;
     void Start()
     {
         playerInput = GetComponent<PlayerInput>();
@@ -55,6 +58,22 @@ public class ItemManager : MonoBehaviour
         if (playerInput.actions["Eat"].WasReleasedThisFrame())
         {
             isUsingWater = false;
+        }
+        if (playerInput.actions["Scan"].WasPressedThisFrame())
+        {
+            if (battery > 0)
+            {
+                battery--;
+                Collider[] hits = Physics.OverlapSphere(transform.position, scanDistance, enemyMask);
+                foreach (var hit in hits)
+                {
+                    Vector3 dir = (hit.transform.position - transform.position).normalized;
+                    if (Vector3.Angle(transform.forward, dir) <= scanAngle * 0.5f && hit.name != "Spike")
+                    {
+                        hit.GetComponent<OutlineController>().ShowOutline();
+                    }
+                }
+            }
         }
         if(isUsingHeal|| isUsingWater)
         {

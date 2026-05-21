@@ -96,7 +96,7 @@ public class TutorialProgress : Progress
             GameObject line = Instantiate(captionLinePrefab, captionLineParent);
             line.GetComponent<CaptionLine>().SetText("We still don’t know how these enemies came to be, but fortunately, regular weapons are effective against them.");
             objText.SetText("• Kill the enemy");
-            hintText.SetText("The enemy will start chasing you\n as soon as they see you\nDealing enough damage will kill the enemy");
+            hintText.SetText("The enemy will start chasing you\n as soon as they see you\nDealing enough damage will kill the enemy\nPress 5 to scan the enemy");
             doors[3].SetActive(false);
             progress = 16;
         }
