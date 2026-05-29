@@ -46,7 +46,11 @@ Graph screenshot:
 Enemy Animator. Includes idle, agitated, moving, attacking, and death states. Related content can be found in `AIManager.cs`, `EnemyHealth.cs`, and the enemy's Animator Controller.
 
 ## Milestone 3 Devlog
-Milestone 3 Devlog goes here.
+
+<img width="965" height="425" alt="image" src="https://github.com/user-attachments/assets/4ee672ef-af7c-4258-863f-2d7e6d374556" />
+
+<img width="879" height="516" alt="image" src="https://github.com/user-attachments/assets/2afaaa8a-1438-4bc7-b51d-eeb2f7e6ebdb" />
+
 ## Milestone 4 Devlog
 Milestone 4 Devlog goes here.
 ## Final Devlog
