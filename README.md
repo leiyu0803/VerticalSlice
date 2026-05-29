@@ -47,9 +47,27 @@ Enemy Animator. Includes idle, agitated, moving, attacking, and death states. Re
 
 ## Milestone 3 Devlog
 
+### Question 1
+
+I added two shader graph. First graph creates a outline for the enemy. This effect will only appear when enemy is being scanned. I use a normalized Object Vector multiply by 0.005, then add the object's location. Also, I make the render face to back, so this will only act like a outline but not block the enemy. Second graph is for the block in the level. This shader will only take the block's word space, ignore the mesh. So I can change the scale of the block with out stretch the texture.
+
 <img width="965" height="425" alt="image" src="https://github.com/user-attachments/assets/4ee672ef-af7c-4258-863f-2d7e6d374556" />
 
 <img width="879" height="516" alt="image" src="https://github.com/user-attachments/assets/2afaaa8a-1438-4bc7-b51d-eeb2f7e6ebdb" />
+
+### Question 2
+
+I changed some UI element. Now the UI will not block the cross hair. 
+
+I added the health, attack speed and walk speed of the enemy, since many tester think the enemy is too easy to kill. Now player need 20 bullet to kill the enemy.
+
+I changed the color of the enemy outline. Now the outline will not like like the same color of the crosshair when player is aiming at the enemy.
+
+### Question 3
+
+I added the scan effect. Player can press 5 to use a battery to scan the enemy. When the enemy is being scanned, It will show a outline and have a frame (Like a wall hack). The health of the enemy will also shown.
+
+I added fire mode switch. Player can press b to switch between full auto and semi auto. This change will effect on UI.
 
 ## Milestone 4 Devlog
 Milestone 4 Devlog goes here.

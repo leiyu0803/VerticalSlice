@@ -67,7 +67,20 @@ public class WeaponManager : MonoBehaviour
             audioSource.PlayOneShot(tailSound);
             Shooted = false;
         }
-
+        if (playerInput.actions["SwitchFireMode"].WasPressedThisFrame())
+        {
+            semiAuto = !semiAuto;
+            if (semiAuto)
+            {
+                UIManager.SemiAuto.SetActive(true);
+                UIManager.FullAuto.SetActive(false);
+            }
+            else
+            {
+                UIManager.SemiAuto.SetActive(false);
+                UIManager.FullAuto.SetActive(true);
+            }
+        }
 
     }
 

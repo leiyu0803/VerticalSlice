@@ -23,6 +23,9 @@ public class UIManager : MonoBehaviour
     public Image sanity;
     public Image sanityLerp;
 
+    public GameObject FullAuto;
+    public GameObject SemiAuto;
+
     [HideInInspector] public float healthLastUpdateTime;
     [HideInInspector] public float sanityLastUpdateTime;
     private void Start()

@@ -9632,7 +9632,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -100, y: 0}
+  m_AnchoredPosition: {x: -100, y: 125}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 1, y: 0}
 --- !u!114 &1722410218
@@ -11470,6 +11470,8 @@ MonoBehaviour:
   healthLerp: {fileID: 1084572490}
   sanity: {fileID: 522344406}
   sanityLerp: {fileID: 1853464551}
+  FullAuto: {fileID: 1889562727}
+  SemiAuto: {fileID: 218645932}
   healthLastUpdateTime: 0
   sanityLastUpdateTime: 0
 --- !u!114 &2064311175
