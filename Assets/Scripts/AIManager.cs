@@ -16,6 +16,9 @@ public class AIManager : MonoBehaviour
     bool WasSeeingPlayer = false;
     bool WasRageAnimPlayed = false;
     bool WasAttacking = false;
+
+    [SerializeField] AudioSource audioSource;
+    [SerializeField] AudioClip audioClip;
     private void Start()
     {
         agent = GetComponent<NavMeshAgent>();
@@ -97,6 +100,7 @@ public class AIManager : MonoBehaviour
         {
             WasFirstTimeSeeingPlayer = false;
             animator.SetTrigger("Rage");
+            audioSource.PlayOneShot(audioClip);
         }
         else if (WasAttacking)
         {

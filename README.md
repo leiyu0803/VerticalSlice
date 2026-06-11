@@ -69,10 +69,32 @@ I added the scan effect. Player can press 5 to use a battery to scan the enemy. 
 
 I added fire mode switch. Player can press b to switch between full auto and semi auto. This change will effect on UI.
 
-## Milestone 4 Devlog
-Milestone 4 Devlog goes here.
 ## Final Devlog
-Final Devlog goes here.
+### Question 1
+
+My core gameplay loop consists of the following steps: exploring the environment, scanning for threats, managing health and sanity, engaging with or avoiding enemies, and completing the mission before evacuating.
+
+In the current vertical slice, my game features a tutorial level. The level is a linear sequence that incorporates all key gameplay features, including: basic movement, third-person over-the-shoulder shooting, health and sanity systems, enemies, the scanning system, missions, and evacuation.
+
+The vertical slice contains all the essential features of the full game. Although there is only one type of enemy instead of the planned three, and the level is small and linear, the system is complete and includes all the interactions players will need in the full game.
+
+These elements directly demonstrate my vision for the full game. Powerful and fast-moving enemies require players to carefully consider whether to engage in combat, while health, sanity, and ammunition limits force players to manage their resources, and the mission and evacuation mechanics showcase the structure of future levels.
+
+### Question 2
+
+When the player scans an enemy, the game will trigger a rendering effect. In the `ItemManager`, when the player activates the scan function, the game will perform a scan; this triggers the `ShowOutline()` method in the `OutlineController` of all enemies within a fan-shaped area in front of the player, and triggers `HideOutline()` after a fixed number of seconds. This method adds a new texture layer (`Shader Graphs_Outline`) to all parts of the enemy, giving them a blue outline. Additionally, a border is added around the enemy, and will to be displayed through walls.
+
+### Question 3
+
+My current approach to breaking down a large-scale project is as follows: First, I determine the overall experience the player will have, then I break that experience down into several major systems, and finally, I break those major systems down into smaller systems that implement specific functions. When breaking down the systems, I ensure that these smaller systems are decoupled, meaning they can be easily modified and replaced. After that, I break each system down further into manageable, step-by-step components that I can implement and test directly. For example, in this project, I broke the game down into five major systems: Player, Interactable Objects, Weapons, Enemies, and Quests. For the Player system, I further divided it into several smaller subsystems: Movement, Actions, Health, Interaction, Aiming, UI, Animation, and Inventory. Each subsystem is controlled by a separate script. In the Movement system, I use a Movement State Manager to manage the player’s current movement state and have created four distinct states: Idle, Walk, Run, and Crouch. Each state is controlled by a separate script that inherits from MovementBaseState. Within each state’s script, there are three distinct methods—EnterState, UpdateState, and ExitState—that call upon components from other systems, such as animations.
+
+I use bubble diagrams and task-step breakdowns. Bubble diagrams help me organize and visualize the relationships between all the different systems—such as the player, enemies, weapons, interactive objects, and the quest system—as well as the dependency structures between different subsystems within larger systems. Task-step breakdowns help me break down a large system into manageable steps. These two approaches help me stay focused on the features that need to be developed and ensure I never feel lost or unsure of what to do next.
+
+This process is also very useful for managing the project’s scope. When I list everything out, I can clearly see which elements are essential and which are optional. For example, having three different types of enemies was optional, so I later removed two of them. This also helps me understand the dependencies between different systems and estimate how much time each part will take to implement.
+
+During development, I realized that my initial breakdown was too broad. For instance, I had simply divided the player into three broad categories: shooting, health, and movement. This left me feeling lost when implementing the player’s functionality. So, I re-broke down the player based on the documentation. Additionally, I hadn’t initially broken down the features into steps, so I spent a lot of time on things I didn’t actually need and spent a significant amount of time debugging.
+
 ## Open-source assets
 - [Movement Animations](https://www.mixamo.com/#/?page=1&type=Motion%2CMotionPack)
 - [Guns and Player](https://assetstore.unity.com/packages/3d/animations/tactical-fps-animations-311410)
+
